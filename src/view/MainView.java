@@ -35,15 +35,15 @@ public class MainView extends JFrame {
         setBounds(50, 50, 1280, 765);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        usernameFont = new Font("cursive", Font.PLAIN, 15);
+        usernameFont = new Font("cursive", Font.PLAIN, 20);
         buttonFont = new Font("cursive", Font.PLAIN, 25);
         speedtestFont = new Font("cursive", Font.PLAIN, 50);
 
         usernameLabel = new JLabel("hello, " + username);
-        usernameLabel.setBounds(820, 0, 200, 30);
+        usernameLabel.setBounds(820, 0, 200, 60);
         usernameLabel.setFont(usernameFont);
 
-        speedtestLabel = new JLabel("0\tMbps");
+        speedtestLabel = new JLabel("0  Mbps");
         speedtestLabel.setBounds(400, 300, 600, 100);
         speedtestLabel.setFont(speedtestFont);
         speedtestLabel.setBorder(BorderFactory.createLineBorder(Color.black, 5));
@@ -51,11 +51,11 @@ public class MainView extends JFrame {
 
         userButtonList = new ArrayList<JButton>();
 
-        final int[][] bounds = {{500, 60, 200, 200},
-                                {800, 60, 200, 200},
-                                {650, 280, 200, 200},
-                                {500, 500, 200, 200},
-                                {800, 500, 200, 200}};
+        final int[][] bounds = {{500, 60, 250, 200},
+                                {800, 60, 250, 200},
+                                {650, 280, 250, 200},
+                                {500, 500, 250, 200},
+                                {800, 500, 250, 200}};
 
         for (int i = 0; i < maxNeighbors; i++) {
             JButton userButton = new JButton();
@@ -80,7 +80,7 @@ public class MainView extends JFrame {
                     JButton userButton = userButtonList.get(i);
                     UserInfo userInfo = neighbors.get(i);
                     
-                    userButton.setText(userInfo.getName() + " \n" + userInfo.getHostAddr());
+                    userButton.setText("<html>" + userInfo.getName() + "<br />" + userInfo.getHostAddr() + "</html>");
                     userButton.setVisible(true);
 
                     userButton.addActionListener(new ActionListener() {
@@ -128,7 +128,7 @@ public class MainView extends JFrame {
                         speedtestLabel.setVisible(true);
                         SpeedTest speedTest = new SpeedTest();
                         while (!speedTest.getIsFinished()) {
-                            speedtestLabel.setText(speedTest.getSpeed() + "\tMbps");
+                            speedtestLabel.setText(speedTest.getSpeed() + "  Mbps");
                         }
                     }
                 }).start();
