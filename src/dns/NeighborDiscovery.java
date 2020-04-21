@@ -65,7 +65,7 @@ public class NeighborDiscovery {
             String name = info.getName();
             String ipAddr = info.getInet4Addresses()[0].getHostAddress();
 
-            if (!ipAddr.equals(localAddr) && !userInfos.contains(new UserInfo(name, ipAddr))) {
+            if (!ipAddr.equals(localAddr.getHostAddress()) && !userInfos.contains(new UserInfo(name, ipAddr))) {
                 userInfos.add(new UserInfo(name, ipAddr));
 
                 // Debug

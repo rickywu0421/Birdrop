@@ -12,18 +12,18 @@ import dns.NeighborRegistration;
 import dns.NeighborDiscovery;
 
 public class Main {
-    private static String username;
+    private static String name;
 
     public static void main(String[] args) {
         new Server();
 
         LoginView loginView = new LoginView();
-
-        while ((username = loginView.getName()) == null);
+        while ((name = loginView.getName()).equals(""))
+            ;   
 
         // registration
         try {
-            new NeighborRegistration(InetAddress.getLocalHost(), username);
+            new NeighborRegistration(InetAddress.getLocalHost(), name);
         } catch(UnknownHostException e) {
             e.printStackTrace();
             System.exit(1);
@@ -37,7 +37,7 @@ public class Main {
             System.exit(1);
         }
 
-        MainView mainView = new MainView(username);
+        MainView mainView = new MainView(name);
         ViewDelegate.setMainView(mainView);
     }
 }

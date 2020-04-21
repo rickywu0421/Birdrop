@@ -13,7 +13,7 @@ public class LoginView extends JFrame {
     private JLabel hintLabel;
     private JTextField usernameText;
     private JButton submitButton;
-    private String username;
+    private String username = "";
 
     public LoginView() {
         init();
@@ -32,8 +32,13 @@ public class LoginView extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                username = usernameText.getText();
-                setVisible(false);
+        		username = usernameText.getText();
+            	if (username.equals("")) {
+            		JOptionPane.showMessageDialog(null, "請輸入使用者名稱","Warning",JOptionPane.WARNING_MESSAGE);
+            	} else {
+            		username = usernameText.getText();
+            		setVisible(false);
+            	}
             }
         });
 
